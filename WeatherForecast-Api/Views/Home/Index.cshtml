@@ -1,0 +1,20 @@
+﻿@{ Layout = null; }
+
+@using (Html.BeginForm("GetTemperature", "Home", FormMethod.Get))
+{
+    <label for="city">Enter a city:</label>
+    <input type="text" name="city" id="city" />
+    <input type="submit" value="Get temperature" />
+}
+
+@if (ViewBag.Temperature != null)
+{
+    <p>The temperature in @Request.QueryString["city"] is @ViewBag.Temperature °C.</p>
+    <p>Feels like @Request.QueryString["city"] @ViewBag.FeelsLike °C.</p>
+    <p>Wind is @Request.QueryString["city"] @ViewBag.Speed km/h.</p>
+}
+
+@if (ViewBag.Error != null)
+{
+    <p>@ViewBag.Error</p>
+}
